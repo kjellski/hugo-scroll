@@ -1,16 +1,18 @@
 {{ define "main" }} {{ $headless := .Site.GetPage "/homepage" }} {{ $sections := $headless.Resources.ByType "page" }}
-<header id="site-head" {{ with .Params.header_image }}style="background-image: url({{ . }})" {{ end }}>
-  <div class="vertical">
-    <div id="site-head-content" class="inner">
-      <div id="header-logo" {{ with .Params.header_logo }} style="background-image: url({{ . }})" {{ end }}></div>
-      {{ with .Params.header_headline }}
-      <h1 class="blog-title">{{ . }}</h1>
-      {{ end }} {{ with .Params.header_subheadline }}
-      <h2 class="blog-description">{{ . }}</h2>
-      {{ end }} {{ range where $sections ".Params.header_menu" "eq" true }}
-      <a class="btn site-menu" data-title="{{ .Title }}">{{ .Title }}</a>
-      {{ end }}
+<header id="site-head" {{ with .Params.header_image }} style="background-image: url({{ . }})" {{ end }}>
+  <div id="site-head-content" class="center">
+    <div id="header-logo">
+      <img src="images/Makers_Magnet_Logo_color.svg" />
     </div>
+    {{ with .Params.header_headline }}
+    <h1 class="blog-title">{{ . }}</h1>
+    {{ end }} {{ with .Params.header_subheadline }}
+    <h2 class="blog-description">{{ . }}</h2>
+    {{ end }} {{ range where $sections ".Params.header_menu" "eq" true }}
+    <a class="btn site-menu" data-title="{{ .Title }}">{{ .Title }}</a>
+    {{ end }}
+  </div>
+  <div class="center">
     <i id="header-arrow" class="fa fa-angle-down"></i>
   </div>
 </header>
